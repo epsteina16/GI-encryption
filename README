@@ -1,0 +1,28 @@
+# GI - Encryption
+# Aaron Epstein - Copyright 2017
+
+# Usage
+To compile - use 'make' command
+To run - usage is: ./crypter -type filename
+					with type being encrypt or decrypt
+
+# How it Works
+GI - Encryption is a symmetric-key file encryption program. It is meant
+and designed to create highly-secure encrypted files, that can only be
+decrypted using the correct key. Each encryption is random, and therefore
+two things can not be encrypted using the same "scheme". If the wrong key
+is used to decrypt the file, it becomes almost impossible to get the original
+file back (this makes it both secure and dangerous).
+
+# Why is it secure
+GI - encryption uses a different type of encryption then most other softwares -
+graph isomorphism. Each file is represented as a graph data structure, and then
+an isomorphic graph is created from the original graph using random permutations.
+The result is an encrypted file that contains an isomorphic graph to to the original.
+The runtime for determining whether two graphs are isomorphic is 2^(O(√n log n)), 
+making it extremely hard to try to grind out a decryption solution for encrypted files.
+Each file is made at least 15x15, making the problem very hard. The larger the file, the
+more secure this is. As a comparison, RSA is highly effective at a large scale
+(when the number chosen (n) is very very large), but for local files, a smaller scheme
+is often used, which can be broken by simple math (i.e. square rooting the number
+and checking for numbers around there).
